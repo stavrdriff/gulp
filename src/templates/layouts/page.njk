@@ -1,0 +1,28 @@
+{% set pageTitle = pageTitle or "default title" %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+{% block css %}
+   <link rel="stylesheet" href="css/style.min.css">
+{% endblock %}
+
+   <title>{{pageTitle}}</title>
+
+
+</head>
+
+<body>
+{% block header %}
+{% include "partials/header.njk" %}
+   {% endblock %}
+<div class="main"></div>
+   <script src="js/script.min.js"></script>
+</body>
+
+</html>

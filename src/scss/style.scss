@@ -1,0 +1,52 @@
+@import url("/src/scss/normalize.css");
+
+* {
+   box-sizing: border-box;
+}
+html {
+   font-size: 20px;
+}
+body {
+   font-size: 20px;
+}
+.main {
+   display: flex;
+}
+.header {
+   background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+   font-size: 20px;
+   @media (max-width: 1024px) {
+      font-size: 16px;
+      @media (hover) {
+         &:hover {
+            background: #000;
+            color: #fff;
+         }
+      }
+   }
+   &__nav {
+      padding: 0;
+      margin: 0;
+   }
+   &__ul {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: space-around;
+   }
+   &__li {
+      list-style: none;
+   }
+   &__link {
+      color: green;
+      transition: 0.4s;
+      @media (hover) {
+         &:hover {
+            color: red;
+         }
+      }
+      @media (max-width: 1024px) {
+         font-size: 16px;
+      }
+   }
+}
