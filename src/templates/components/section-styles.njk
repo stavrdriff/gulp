@@ -1,0 +1,39 @@
+{% macro sectionStyles(
+   title = "avone styles",
+   linkText = "show women`s dress",
+   description = "choose your favorite color",
+   imgFirst = {
+      url: "img/styles1.jpg",
+      alt: ""
+   },
+   imgSecond = {
+     url: "img/styles2.jpg",
+     alt: ""
+   },
+   imgThird = {
+     url: "img/styles3.jpg",
+     alt: ""
+   }
+   ) %}
+   <section class="styles items">
+      <div class="container">
+         <h2 class="styles__title items__title">{{ title }}</h2>
+         <p class="styles__description styles__description_capitalize items__description">{{ description }}</p>
+         <div class="styles__wrap">
+            <div class="styles__container styles__container_paddingtop">
+               <img src="{{ imgFirst.url }}" alt="{{ imgFirst.alt }}" class="styles__img">
+            </div>
+            <div class="styles__container styles__container_paddingright styles__container_paddingbottom">
+               <img src="{{ imgSecond.url }}" alt="{{ imgSecond.alt }}" class="styles__img">
+               <div class="styles__block">
+                  <a href="#" class="styles__link">{{ linkText }}</a>
+                  <div class="styles__background">
+                     <img src="{{ imgThird.url }}" alt="{{ imgThird.alt }}" class="styles__img">
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>  
+      {{ caller() }}
+   </section>
+{% endmacro %}

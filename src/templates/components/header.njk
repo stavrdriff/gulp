@@ -1,0 +1,60 @@
+{% macro header(
+   navLinks = [
+      {
+         title: "Home",
+         text: "Home"
+      },
+      {
+         title: "Shop",
+         text: "Shop"
+      },
+      {
+         title: "Lookbook",
+         text: "Lookbook"
+      },
+      {
+         title: "Features",
+         text: "Features"
+      },
+      {
+         title: "Pages",
+         text: "Pages"
+      },
+      {
+         title: "Blog",
+         text: "Blog"
+      }
+   ]
+   ) %}
+   <header class="header">
+      <div class="container">
+         <div class="header__container">
+            <a href="#" class="logo" title="{{ companyName }}">{{ companyName }}</a>
+            <nav class="nav">
+               <ul class="nav__ul">
+               {% for link in navLinks %}
+                  <li class="nav__li"><a href="#" class="nav__link" title="{{ link.title }}">{{ link.text }}</a></li>
+               {% endfor %}
+               </ul>
+            </nav>
+            <div class="header__links">
+               <a href="#" class="header__link" title="Search on site"><span class="icon-search"></span></a>
+               <a href="#" class="header__link" title="My favorite"><span class="icon-heart-o"></span></a>
+               <a href="#" class="header__link" title="My cart"><span class="icon-cart"></span></a>
+            </div>
+            <div id="burger" class="header__burger burger" title="Menu">
+               <div class="burger__line"></div>
+               <div class="burger__line"></div>
+               <div class="burger__line"></div>
+            </div>
+            <nav id="menu" class="menu">
+               <ul class="menu__ul">
+                  {% for link in navLinks %}
+                  <li class="menu__li"><a href="#" class="menu__link" title="{{ link.title }}">{{ link.text }}</a></li>
+                  {% endfor %}
+               </ul>
+            </nav>
+         </div>
+      </div>
+   </header>
+{% endmacro %}

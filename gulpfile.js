@@ -12,11 +12,11 @@ let path = {
       favicon: project_folder + "/"
    },
    src: {
-      html: [source_folder + "/templates/**/*.njk"],
+      html: [source_folder + "/templates/*.njk"],
       css: source_folder + "/scss/style.scss",
       js: source_folder + "/js/script.js",
       img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
-      fonts: source_folder + "/fonts/*.ttf",
+      fonts: source_folder + "/fonts/**/*",
       favicon: source_folder + "/favicon/**",
       templatesRoot: source_folder + "/templates/"
    },
@@ -25,7 +25,7 @@ let path = {
       css: source_folder + "/scss/**/*.scss",
       js: source_folder + "/js/**/*.js",
       img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
-      fonts: source_folder + "/fonts/*.ttf",
+      fonts: source_folder + "/fonts/**/*",
       favicon: source_folder + "/favicon/**"
    },
    clean: "./" + project_folder + "/"
@@ -134,6 +134,10 @@ function favicon() {
    return src(path.src.favicon)
       .pipe(dest(path.build.favicon))
 }
+function fonts(){
+   return src(path.src.fonts)
+   .pipe(dest(path.build.fonts))
+}
 
 function watchFiles() {
    gulp.watch([path.watch.html], html);
@@ -141,13 +145,14 @@ function watchFiles() {
    gulp.watch([path.watch.js], js);
    gulp.watch([path.watch.img], images);
    gulp.watch([path.watch.favicon], favicon);
+   gulp.watch([path.watch.fonts], fonts);
 }
 
 function clean() {
    return del(path.clean)
 }
 
-let build = gulp.series(clean, gulp.parallel(js, css, html, images, favicon));
+let build = gulp.series(clean, gulp.parallel(js, css, html, images, favicon, fonts));
 let watch = gulp.parallel(build, watchFiles, browserSync);
 
 exports.images = images;

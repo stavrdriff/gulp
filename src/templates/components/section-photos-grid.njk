@@ -1,0 +1,40 @@
+{% macro sectionPhotosGrid(
+   images = [
+      {
+         divClassModifier: "grid__images_span2",
+         url: "img/grid1.jpg",
+         alt: ""
+      },
+      {
+         divClassModifier: "grid__images_span4",
+         url: "img/grid2.jpg",
+         alt: "",
+         linkText: "category name",
+         linkTitle: "Category name"
+      },
+      {
+         url: "img/grid3.jpg",
+         alt: ""
+      },
+      {
+         url: "img/grid4.jpg",
+         alt: ""
+      }
+   ]
+   ) %}
+   <section class="photos grid">
+      <div class="container">
+         <div class="grid__wrap">
+         {% for img in images %}
+            <div class="grid__images {{ img.divClassModifier }}">
+               <img src="{{ img.url }}" alt="{{ img.alt }}" class="grid__img">
+               {% if img.linkText %}
+                  <a href="#" class="grid__link ButtonWhite" title="{{ img.linkTitle }} - {{ companyName }}">{{ img.linkText }}</a>
+               {% endif %}
+            </div>
+         {% endfor %}
+         </div>
+      </div>
+      {{ caller() }}
+   </section>
+{% endmacro %}

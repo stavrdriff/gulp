@@ -1,0 +1,117 @@
+{% macro contacts () %}
+   <div class="contacts">
+      <a href="https://goo.gl/maps/ngkDtNaKGfhUYEPu5" class="contacts__link information__link_marginbottom"
+         target="_blank" title="Open map"><span class="icon-gps_fixed contacts__gps"></span>Comilla,
+         Bangladesh
+         3500</a>
+      <a href="mailto:kawsarahmed0210@gmail.com" class="contacts__link contacts__link_borderbottom"
+         title="Send Email">kawsarahmed0210@gmail.com</a>
+      <a href="tel:01647470457" class="contacts__link" title="Call">01647470457</a>
+   </div>
+{% endmacro %}
+
+{% macro socials (
+   socials = [
+      {
+         url: "https://www.facebook.com/",
+         spanClassName: "icon-facebook",
+         title: "Facebook"
+      },
+      {
+         url: "https://www.instagram.com/",
+         spanClassName: "icon-instagram",
+         title: "Instagram"
+      },
+      {
+         url: "https://www.twitter.com/",
+         spanClassName: "icon-twitter",
+         title: "Facebook"
+      },
+      {
+         url: "https://www.linkedin.com/",
+         spanClassName: "icon-linkedin",
+         title: "Facebook"
+      }
+   ]
+   ) %}
+   <div class="socials">
+      {% for link in socials %}
+         <a href="{{ link.url }}" class="socials__link" target="_blank" title="{{ link.title }}"><span class="{{ link.spanClassName }}"></span></a>
+      {% endfor %}
+   </div>
+{% endmacro %}
+
+{% macro informationColumns(
+   informationColumns = [
+      {
+         title: "Shop",
+         links: [
+            "Shop",
+            "Collection",
+            "Outlet",
+            "Lookbook"
+         ]
+      },
+      {
+         title: "Help",
+         links: [
+            "FAQ",
+            "Privacy Policy",
+            "Terms and conditions",
+            "Return and Exchanges"
+         ]
+      },
+      {
+         title: "About",
+         links: [
+            "Journal",
+            "Our Story",
+            "Contact",
+            "Store Location"
+         ]
+      }
+   ]
+   ) %}
+   <div class="information__wrap">
+      {% for column in informationColumns %}
+         <div class="information__column">
+         <h6 class="information__h6">{{ column.title }}</h6>
+      {% for link in column.links %}
+         <a href="#" class="information__link" title="Shop">{{ link }}</a>
+      {% endfor %}
+         </div>
+      {% endfor %}
+   </div>
+{% endmacro %}
+
+
+{% macro sectionInformation() %}
+   <section class="information">
+      <div class="container">
+         <div class="information__container">
+            <div class="information__contacts">
+               <h5 class="information__title">{{ companyName }}</h5>
+               <p class="information__text">We earned a reputation of being good at what we do.
+                  Let us take your online shop to new dimension in
+                  success!</p>
+
+                  {{ contacts() }}
+
+                  {{ socials() }}
+
+            </div>
+            <div class="information__links">
+               <h5 class="information__title">recive email updates</h5>
+               <form class="information__subscribe">
+                  <input class="information__input" type="email" placeholder="your email address" required>
+                  <button class="information__btn">join</button>
+               </form>
+               
+               {{ informationColumns() }}
+
+            </div>
+         </div>
+      </div>  
+      {{ caller() }}
+   </section>
+{% endmacro %}

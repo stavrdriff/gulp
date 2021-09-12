@@ -1,0 +1,36 @@
+{% macro sectionImagine(
+   imgUrl = "img/imagine1.jpg",
+   imgAlt = companyName + " - new trend - An exclusive selection of this season's trends.",
+   wrapModifier = "imagine__wrap_right",
+   smallTitle = "new trend",
+   bigTitle = "collusion",
+   description = "An exclusive selection of this season's trends.",
+   buttons = [
+      {
+         title: "Discover - " + companyName,
+         text: "Discover"
+      },
+      {
+         title: "Shop now - " + companyName,
+         text: "shop now"
+      }
+   ]
+) %}
+   <section class="imagine">
+      <img class="imagine__img" src="{{ imgUrl }}" alt="{{ imgAlt }}">
+      <div class="imagine__wrap {{ wrapModifier }}">
+         <p class="imagine__small-title">{{ smallTitle }}</p>
+         <h3 class="imagine__big-title">{{ bigTitle }}</h3>
+         <p class="imagine__description">{{ description }}</p>
+         {% if buttons %}
+            <div class="imagine__btns">
+            {% for button in buttons %}
+               <a href="#" class="imagine__link ButtonBlack" title="{{ button.title }}">{{ button.text }}</a>
+            {% endfor %}
+            </div>
+         {% endif %}
+      </div>
+      {{ caller() }}
+   </section>
+{% endmacro %}
+

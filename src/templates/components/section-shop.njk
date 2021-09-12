@@ -1,0 +1,26 @@
+{% macro sectionShop(
+   title = "WOMeN’S FASHION",
+   description = "shop our new arrivals from established brands",
+   sectionClassName = "womens items",
+   titleClassName = "womens__title items__title",
+   descriptionClassName = "womens__description items__description",
+   wrapClassName = "items__wrap"
+) %}
+   <section class="{{ sectionClassName }}">
+         <div class="container">
+            {% if title %}
+               <h2 class="{{ titleClassName }}">{{ title }}</h2>
+            {% endif %}
+            {% if description %}
+               <p class="{{ descriptionClassName }}">{{ description }}</p>
+            {% endif %}
+            {% if wrapClassName %}
+               <div class="{{ wrapClassName }}">
+            {% endif %}
+            {{ caller() }}
+            {% if wrapClassName %}
+               </div>
+            {% endif %}
+         </div>
+   </section>
+{% endmacro %}

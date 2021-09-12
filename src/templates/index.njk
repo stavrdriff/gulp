@@ -1,5 +1,151 @@
 {% extends "layouts/page.njk" %}
 
 {% block css %}
+{# <link rel="stylesheet" href="css/style2.min.css"> #}
 {{ super() }}
+{% endblock %}
+
+{% block main %}
+
+   {% from "components/section-shop.njk" import sectionShop %}
+   {% from "components/card.njk" import card %}
+   {% from "components/section-imagine.njk" import sectionImagine with context %}
+   {% from "components/section-photos-grid.njk" import sectionPhotosGrid with context %}
+   {% from "components/section-styles.njk" import sectionStyles with context %}
+   {% from "components/section-information.njk" import sectionInformation with context %}
+
+   {% set cardsList = [
+         {
+            "imgUrl": "img/card1.jpg",
+            "imgAlt": "IGURE - Green Muscle Fit Polo Shirt - Your Logo",
+            "href": "#",
+            "brand": "igure",
+            "description": "green muscle fit polo shirt",
+            "price": "229",
+            "discount": "0",
+            "sex": "woman"
+         },
+         {
+            "imgUrl": "img/card2.jpg",
+            "imgAlt": "IGURE - Green Muscle Fit Polo Shirt - Your Logo",
+            "href": "#",
+            "brand": "igure",
+            "description": "green muscle fit polo shirt",
+            "price": "229",
+            "discount": "129",
+            "sex": "woman"
+         },
+         {
+            "imgUrl": "img/card3.jpg",
+            "imgAlt": "IGURE - Green Muscle Fit Polo Shirt - Your Logo",
+            "href": "#",
+            "brand": "igure",
+            "description": "green muscle fit polo shirt",
+            "price": "229",
+            "discount": "",
+            "sex": "woman"
+         },
+         {
+            "imgUrl": "img/card4.jpg",
+            "imgAlt": "IGURE - Green Muscle Fit Polo Shirt - Your Logo",
+            "href": "#",
+            "brand": "igure",
+            "description": "green muscle fit polo shirt",
+            "price": "229",
+            "discount": "129",
+            "sex": "woman"
+         },
+         {
+            "imgUrl": "img/card5.jpg",
+            "imgAlt": "IGURE - Green Muscle Fit Polo Shirt - Your Logo",
+            "href": "#",
+            "brand": "igure",
+            "description": "green muscle fit polo shirt",
+            "price": "229",
+            "discount": "129",
+            "sex": "man"
+         },
+         {
+            "imgUrl": "img/card6.jpg",
+            "imgAlt": "IGURE - Green Muscle Fit Polo Shirt - Your Logo",
+            "href": "#",
+            "brand": "igure",
+            "description": "green muscle fit polo shirt",
+            "price": "229",
+            "discount": "",
+            "sex": "man"
+         },
+         {
+            "imgUrl": "img/card7.jpg",
+            "imgAlt": "IGURE - Green Muscle Fit Polo Shirt - Your Logo",
+            "href": "#",
+            "brand": "igure",
+            "description": "green muscle fit polo shirt",
+            "price": "229",
+            "discount": "129",
+            "sex": "man"
+         },
+         {
+            "imgUrl": "img/card8.jpg",
+            "imgAlt": "IGURE - Green Muscle Fit Polo Shirt - Your Logo",
+            "href": "#",
+            "brand": "igure",
+            "description": "green muscle fit polo shirt",
+            "price": "229",
+            "discount": "129",
+            "sex": "man"
+         }
+   ] %}
+
+   {% call sectionImagine() %}
+   {% endcall %}
+
+   {% call sectionPhotosGrid() %}
+   {% endcall %}
+
+   {% call sectionShop() %}
+      {% for cardItem in cardsList %}
+         {% if cardItem.sex==="woman" %}
+         {{ card(cardItem) }}
+         {% endif %}
+      {% endfor %}
+   {% endcall %}
+
+   {% call sectionShop(
+      title = "MeN’S FASHION",
+      description = "shop our new arrivals from established brands",
+      sectionClassName = "mens items",
+      titleClassName = "mens__title items__title",
+      descriptionClassName = "mens__description items__description",
+      wrapClassName = "items__wrap"
+      ) %}
+      {% for cardItem in cardsList %}
+         {% if cardItem.sex==="man" %}
+         {{ card(cardItem) }}
+         {% endif %}
+      {% endfor %}
+   {% endcall %}
+
+   {% call sectionStyles() %}
+   {% endcall %}
+
+   {% call sectionImagine(
+      imgUrl = "img/imagine2.jpg",
+      imgAlt = companyName + " - new trend - An exclusive selection of this season's trends.",
+      wrapModifier = "imagine__wrap_left",
+      smallTitle = "OWN THE DAY",
+      bigTitle = "TACHEN 19",
+      description = "An exclusive selection of this season's trends.",
+      buttons = [
+         {
+            title: "Shop collection - " + companyName,
+            text: "shop collection"
+         }
+      ]
+      )%}
+   {% endcall %}
+
+   {% call sectionInformation() %}
+   {% endcall %}
+
 {% endblock %}
